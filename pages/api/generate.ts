@@ -8,7 +8,7 @@ const IMAGE_HEIGHT = 400;
 const generate = async (req: NextApiRequest, res: NextApiResponse) => {
   const prompt = req.body.prompt as string;
   const apiKey = process.env.LEAP_API_KEY as string;
-
+  res.status(200).json({apiKey: apiKey, prompt: prompt});
   if (!prompt || prompt.length === 0 || !apiKey) {
     res.status(400).json({ error: "Invalid request. Check key and prompt." });
     return;
